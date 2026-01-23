@@ -1,34 +1,59 @@
 # Semana2_Shark_Attacks
-En este proyecto limpiamos un conjunto de datos desordenado (Shark Attacks) mediante técnicas de data wrangling.
 
-Cosas a cambiar de types: Age a int, date a ?, Year a int? (habría que mantener nulos y usar Int64? df["Year"] = df["Year"].astype("Int64"))
-Tenemos datos vacíos, países repetidos con diferentes nombres, faltan años, fechas etc
+🎯 Objetivo del proyecto
+Transformar el dataset histórico Global Shark Attack File (GSAF) en una base de datos limpia y estructurada. El propósito es identificar patrones de riesgo y factores que influyen en la fatalidad de los ataques para informar decisiones de seguridad costera y prevención.
 
-hipótesis: 
-1. Tiene relación el tipo de actividad con recibir más ataques de tiburones?
-2. Ciertas lesiones aumentan la probabilidad de que el ataque sea fatal?
-3. Temporada del año
-4. El número de ataques ha aumentado o disminuido con los años?
+🛠️ Proceso de Análisis (Data Wrangling)
+El proyecto se centró en la limpieza profunda de un dataset con 7,065 registros y 23 variables iniciales:
 
-Título del proyecto → Shark Attack Analysis: Data Cleaning & Insights
-Objetivo del proyecto → Transformar un dataset histórico de ataques de tiburón en una base de datos limpia y estructurada para identificar patrones de riesgo, con el fin de informar a tomar decisiones de seguridad y prevención.
-Contexto del negocio → Este análisis podría ser usado por organizaciones de turismo y seguridad costera que necesitan comprender qué actividades presentan mayor riesgo de ataques de tiburón. La meta es priorizar medidas preventivas y recursos de seguridad, optimizando la protección de los visitantes y residentes.
-Dataset → Global Shark Attack File (GSAF) https://www.sharkattackfile.net/spreadsheets/GSAF5.xls
-Registros originales: 
-Variables clave: 
-- country: país del ataque
-- activity: actividad de la víctima
-- injury: descripción de la lesión
-- fatal: resultado del ataque (y/n/unknown)
-Notas sobre calidad del dato: Varias columnas con valores nulos, inconsistencia en categorías
-Preguntas clave →
-- ¿Existen tipos de lesión (injury) asociados a mayor probabilidad de que el ataque sea fatal?
-- ¿Influye la actividad (activity) en la fatalidad de los ataques en los países con más incidentes?
-Proceso de análisis → Describe brevemente: EDA, limpieza, KPIs calculados, métricas clave usadas, metodología aplicada
-(cohortes, RFM, funnels, etc.)
-Resultados / Insights → Los hallazgos más importantes, claros y accionables.
-Recomendaciones de negocio → Tu interpretación profesional:qué decisión tomar, qué experimentos lanzar, qué
-optimizar, qué priorizar.
-Limitaciones → Demuestra pensamiento crítico.
-Próximos pasos → Qué extenderías si tuvieras más datos o más tiempo.
-Cómo replicar el proyecto → Enlace al notebook, queries SQL o dashboard
+Limpieza de Texto: Estandarización de columnas (country, activity, injury, fatal) a minúsculas y eliminación de caracteres especiales.
+
+Filtrado Significativo: Se redujo el análisis a los 3 países con mayor volumen de datos para asegurar relevancia estadística: USA, Australia y Sudáfrica.
+
+Categorización: Se agruparon más de 1,600 actividades en 6 categorías principales (Surfing/Boarding, Swimming, Fishing, Diving, Boating, Other) mediante expresiones regulares.
+
+Tratamiento de Nulos: Identificación de columnas críticas con alta ausencia de datos (como Time con un 50% de nulos) para decidir su exclusión o tratamiento.
+
+🚀 hipótesis: 
+
+1. Hipótesis 1- ¿Existen tipos de injury(lesion) asociados a mayor probabilidad de que el ataque sea fatal?
+
+2. Hipótesis 2- ¿Influye el tipo de actividad con respecto a la fatalidad en los países con más ataques?
+
+📈 Resultados de las Hipótesis
+
+1. ¿Existen tipos de lesiones asociados a mayor fatalidad?
+Sí. El análisis de la columna injury reveló que la ubicación de la mordedura es determinante:
+
+Torso: Es la zona con mayor tasa de fatalidad (8.43%).
+
+Cabeza: Presenta una fatalidad del 7.69%.
+
+Extremidades (Brazos/Piernas): Aunque son las más comunes, tienen tasas de fatalidad menores (entre 5.4% y 6.0%).
+
+2. ¿Influye el tipo de actividad en la fatalidad por país?
+Sí. Se observaron patrones claros al cruzar actividad y resultado fatal:
+
+En Sudáfrica, el buceo (diving) registra una de las tasas de fatalidad más altas (23.1%).
+
+En Australia, la natación (swimming) presenta un riesgo elevado con un 13.5% de ataques fatales.
+
+El Surfing/Boarding, a pesar de tener el mayor volumen de incidentes en USA, mantiene una tasa de fatalidad muy baja (2.4%).
+
+
+💡 Recomendaciones:
+
+Priorización de Rescate: Los servicios de emergencia en playas de Australia y Sudáfrica deben enfocarse en zonas de nado y buceo profundo, donde los ataques son menos frecuentes pero más mortales.
+
+Equipamiento de Seguridad: Fomentar el uso de torniquetes y kits de primeros auxilios rápidos para surfistas, ya que la mayoría de sus lesiones ocurren en extremidades.
+
+Educación: Informar a los bañistas sobre el riesgo crítico de ataques en el torso, que aumenta significativamente la probabilidad de un desenlace fatal.
+
+⚠️ Limitaciones y Próximos Pasos:
+
+Limitación: El dataset presenta inconsistencias históricas y un alto número de valores "Unknown" en la columna de fatalidad.
+
+Futuro: Integrar datos sobre especies de tiburones y temperatura del agua para crear un modelo predictivo de riesgo estacional.
+
+
+👋👋👋👋👋
