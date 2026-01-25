@@ -57,3 +57,6 @@ Futuro: Integrar datos sobre especies de tiburones y temperatura del agua para c
 
 
 👋👋👋👋👋
+
+##Presentación
+Slides: https://docs.google.com/presentation/d/1c5t12UAD2h4H993TJcv7VXkVSYojRXvOcbwRUiGdk38/edit?usp=sharing
